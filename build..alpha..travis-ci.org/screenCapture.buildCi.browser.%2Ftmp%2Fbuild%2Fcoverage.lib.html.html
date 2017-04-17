@@ -1,0 +1,1315 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-find/node_modules/find/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-find">npmtest-find (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-find/node_modules/find/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">16.05% <small>(26 / 162)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 101)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">11.11% <small>(5 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">17.33% <small>(26 / 150)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-find/node_modules/find/</a> » index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var fs = require('fs');
+var path = require('path');
+var Chain = require('traverse-chain');
+&nbsp;
+&nbsp;
+/**
+ * Outline the APIs.
+ */
+var find = module.exports = {
+&nbsp;
+  // file:      function([pat,] root, callback) {}
+  // dir:       function([pat,] root, callback) {}
+&nbsp;
+  // eachfile:  function([pat,] root, action) {}
+  // eachdir:   function([pat,] root, action) {}
+&nbsp;
+  // fileSync:  function([pat,] root) {}
+  // dirSync:   function([pat,] root) {}
+&nbsp;
+};
+&nbsp;
+&nbsp;
+var fss = {};
+&nbsp;
+/**
+ *  Error handler wrapper.
+ */
+fss.errorHandler = <span class="fstat-no" title="function not covered">function(err) {</span>
+<span class="cstat-no" title="statement not covered">  if (err) {</span>
+<span class="cstat-no" title="statement not covered">    if (find.__errorHandler) {</span>
+<span class="cstat-no" title="statement not covered">      find.__errorHandler(err);</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      throw err;</span>
+    }
+  }
+};
+&nbsp;
+&nbsp;
+var error = {
+  notExist: <span class="fstat-no" title="function not covered">function(name) {</span>
+<span class="cstat-no" title="statement not covered">    return new Error(name + ' does not exist.');</span>
+  }
+};
+&nbsp;
+&nbsp;
+var is = (function() {
+<span class="fstat-no" title="function not covered">  function existed(name) {</span>
+<span class="cstat-no" title="statement not covered">    return fs.existsSync(name)</span>
+  }
+  function fsType(type) {
+    return <span class="fstat-no" title="function not covered">function(name) {</span>
+<span class="cstat-no" title="statement not covered">      try {</span>
+<span class="cstat-no" title="statement not covered">        return fs.lstatSync(name)['is' + type]()</span>
+      } catch(e) {
+<span class="cstat-no" title="statement not covered">        fss.errorHandler(e);</span>
+      }
+    }
+  }
+  function objType(type) {
+    return <span class="fstat-no" title="function not covered">function(input) {</span>
+<span class="cstat-no" title="statement not covered">      return ({}).toString.call(input) === '[object ' + type +  ']';</span>
+    }
+  }
+  return {
+    existed:      existed,
+    file:         fsType('File'),
+    directory:    fsType('Directory'),
+    symbolicLink: fsType('SymbolicLink'),
+&nbsp;
+    string:       objType('String'),
+    regexp:       objType('RegExp'),
+    func:         objType('Function')
+  };
+}());
+&nbsp;
+&nbsp;
+/**
+ *  Method injection for handling errors.
+ */
+['readdir', 'lstat'].forEach(function(method) {
+  var origin = fs[method];
+  fss[method] = <span class="fstat-no" title="function not covered">function(path, callback) {</span>
+<span class="cstat-no" title="statement not covered">    return origin.apply(fs, [path, <span class="fstat-no" title="function not covered">function(err) {</span></span>
+<span class="cstat-no" title="statement not covered">      fss.errorHandler(err);</span>
+<span class="cstat-no" title="statement not covered">      return callback.apply(null, arguments);</span>
+    }]);
+  }
+});
+&nbsp;
+&nbsp;
+/**
+ * Enhancement for fs.readlink &amp;&amp; fs.readlinkSync.
+ */
+fss.readlink = <span class="fstat-no" title="function not covered">function(name, fn, depth) {</span>
+<span class="cstat-no" title="statement not covered">  if (depth == undefined) <span class="cstat-no" title="statement not covered">depth = 10;</span></span>
+<span class="cstat-no" title="statement not covered">  if (!is.existed(name) &amp;&amp; (depth &lt; 10)) {</span>
+<span class="cstat-no" title="statement not covered">    return fn(path.resolve(name));</span>
+  }
+<span class="cstat-no" title="statement not covered">  var isSymbolicLink = is.symbolicLink(name);</span>
+<span class="cstat-no" title="statement not covered">  if (!isSymbolicLink) {</span>
+<span class="cstat-no" title="statement not covered">    fn(path.resolve(name));</span>
+  } else <span class="cstat-no" title="statement not covered">if (depth) {</span>
+<span class="cstat-no" title="statement not covered">    fs.readlink(name, <span class="fstat-no" title="function not covered">function(err, origin) {</span></span>
+<span class="cstat-no" title="statement not covered">      fss.errorHandler(err);</span>
+<span class="cstat-no" title="statement not covered">      fss.readlink(origin, fn, --depth);</span>
+    });
+  } else {
+<span class="cstat-no" title="statement not covered">    fn(isSymbolicLink ? '' : path.resolve(name));</span>
+  }
+}
+&nbsp;
+fss.readlinkSync = <span class="fstat-no" title="function not covered">function(name, depth) {</span>
+<span class="cstat-no" title="statement not covered">  if (depth == undefined) <span class="cstat-no" title="statement not covered">depth = 10;</span></span>
+<span class="cstat-no" title="statement not covered">  if (!is.existed(name) &amp;&amp; depth &lt; 10) {</span>
+<span class="cstat-no" title="statement not covered">    return path.resolve(name);</span>
+  }
+<span class="cstat-no" title="statement not covered">  var isSymbolicLink = is.symbolicLink(name);</span>
+<span class="cstat-no" title="statement not covered">  if (!isSymbolicLink) {</span>
+<span class="cstat-no" title="statement not covered">    return path.resolve(name);</span>
+  } else <span class="cstat-no" title="statement not covered">if (depth) {</span>
+<span class="cstat-no" title="statement not covered">    var origin = fs.readlinkSync(name);</span>
+<span class="cstat-no" title="statement not covered">    return fss.readlinkSync(origin, --depth);</span>
+  } else {
+<span class="cstat-no" title="statement not covered">    return isSymbolicLink ? '' : path.resolve(name);</span>
+  }
+}
+&nbsp;
+&nbsp;
+/**
+ * Check pattern against the path
+ */
+var compare = <span class="fstat-no" title="function not covered">function(pat, name) {</span>
+<span class="cstat-no" title="statement not covered">  var str = path.basename(name);</span>
+<span class="cstat-no" title="statement not covered">  return (</span>
+       is.regexp(pat) &amp;&amp; pat.test(name)
+    || is.string(pat) &amp;&amp; pat === str
+  );
+};
+&nbsp;
+&nbsp;
+/**
+ * Traverse a directory recursively and asynchronously.
+ *
+ * @param {String} root
+ * @param {String} type
+ * @param {Function} action
+ * @param {Function} callback
+ * @param {Chain} c
+ * @api private
+ */
+var traverseAsync = <span class="fstat-no" title="function not covered">function(root, type, action, callback, c) {</span>
+<span class="cstat-no" title="statement not covered">  if (!is.existed(root)) {</span>
+<span class="cstat-no" title="statement not covered">    fss.errorHandler(error.notExist(root))</span>
+  }
+<span class="cstat-no" title="statement not covered">  if (is.directory(root)) {</span>
+<span class="cstat-no" title="statement not covered">    fss.readdir(root, <span class="fstat-no" title="function not covered">function(err, all) {</span></span>
+<span class="cstat-no" title="statement not covered">      var chain = Chain();</span>
+<span class="cstat-no" title="statement not covered">      all &amp;&amp; all.forEach(<span class="fstat-no" title="function not covered">function(dir) {</span></span>
+<span class="cstat-no" title="statement not covered">        dir = path.join(root, dir);</span>
+<span class="cstat-no" title="statement not covered">        chain.add(<span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">          var handleFile = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">            if (type == 'file') <span class="cstat-no" title="statement not covered">action(dir);</span></span>
+<span class="cstat-no" title="statement not covered">            process.nextTick(<span class="fstat-no" title="function not covered">function() {</span> <span class="cstat-no" title="statement not covered">chain.next() }</span>);</span>
+          }
+<span class="cstat-no" title="statement not covered">          var handleDir = <span class="fstat-no" title="function not covered">function(skip) {</span></span>
+<span class="cstat-no" title="statement not covered">            if (type == 'dir') <span class="cstat-no" title="statement not covered">action(dir);</span></span>
+<span class="cstat-no" title="statement not covered">            if (skip) <span class="cstat-no" title="statement not covered">chain.next();</span></span>
+            else <span class="cstat-no" title="statement not covered">process.nextTick(<span class="fstat-no" title="function not covered">function() {</span> <span class="cstat-no" title="statement not covered">traverseAsync(dir, type, action, callback, chain)}</span>);</span>
+          }
+<span class="cstat-no" title="statement not covered">          var isSymbolicLink = is.symbolicLink(dir);</span>
+<span class="cstat-no" title="statement not covered">          if (is.directory(dir)) {</span>
+<span class="cstat-no" title="statement not covered">            handleDir();</span>
+          } else <span class="cstat-no" title="statement not covered">if (isSymbolicLink) {</span>
+<span class="cstat-no" title="statement not covered">            fss.readlink(dir, <span class="fstat-no" title="function not covered">function(origin) {</span></span>
+<span class="cstat-no" title="statement not covered">              if (origin) {</span>
+<span class="cstat-no" title="statement not covered">                if (is.existed(origin) &amp;&amp; is.directory(origin)) {</span>
+<span class="cstat-no" title="statement not covered">                  handleDir(isSymbolicLink)</span>
+                } else {
+<span class="cstat-no" title="statement not covered">                  handleFile()</span>
+                }
+              } else {
+<span class="cstat-no" title="statement not covered">                chain.next();</span>
+              }
+            });
+          } else {
+<span class="cstat-no" title="statement not covered">            handleFile();</span>
+          }
+        })
+      });
+<span class="cstat-no" title="statement not covered">      chain.traverse(<span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">        c ? c.next() : callback();</span>
+      });
+    });
+  }
+}
+&nbsp;
+&nbsp;
+/**
+ * Traverse a directory recursively.
+ *
+ * @param {String} root
+ * @param {String} type
+ * @param {Function} action
+ * @return {Array} the result
+ * @api private
+ */
+var traverseSync = <span class="fstat-no" title="function not covered">function(root, type, action) {</span>
+<span class="cstat-no" title="statement not covered">  if (!is.existed(root)) <span class="cstat-no" title="statement not covered">throw error.notExist(root);</span></span>
+<span class="cstat-no" title="statement not covered">  if (is.directory(root)) {</span>
+<span class="cstat-no" title="statement not covered">    fs.readdirSync(root).forEach(<span class="fstat-no" title="function not covered">function(dir) {</span></span>
+<span class="cstat-no" title="statement not covered">      dir = path.join(root, dir);</span>
+<span class="cstat-no" title="statement not covered">      var handleDir = <span class="fstat-no" title="function not covered">function(skip) {</span></span>
+<span class="cstat-no" title="statement not covered">        if (type == 'dir') <span class="cstat-no" title="statement not covered">action(dir);</span></span>
+<span class="cstat-no" title="statement not covered">        if (skip) <span class="cstat-no" title="statement not covered">return;</span></span>
+<span class="cstat-no" title="statement not covered">        traverseSync(dir, type, action);</span>
+      }
+<span class="cstat-no" title="statement not covered">      var handleFile = <span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">        if (type == 'file') <span class="cstat-no" title="statement not covered">action(dir);</span></span>
+      }
+<span class="cstat-no" title="statement not covered">      var isSymbolicLink = is.symbolicLink(dir);</span>
+<span class="cstat-no" title="statement not covered">      if (is.directory(dir)) {</span>
+<span class="cstat-no" title="statement not covered">        handleDir();</span>
+      } else <span class="cstat-no" title="statement not covered">if (isSymbolicLink) {</span>
+<span class="cstat-no" title="statement not covered">        var origin = fss.readlinkSync(dir);</span>
+<span class="cstat-no" title="statement not covered">        if (origin) {</span>
+<span class="cstat-no" title="statement not covered">          if (is.existed(origin) &amp;&amp; is.directory(origin)) {</span>
+<span class="cstat-no" title="statement not covered">            handleDir(isSymbolicLink);</span>
+          } else {
+<span class="cstat-no" title="statement not covered">            handleFile();</span>
+          }
+        }
+      } else {
+<span class="cstat-no" title="statement not covered">        handleFile();</span>
+      }
+    });
+  }
+};
+&nbsp;
+&nbsp;
+['file', 'dir'].forEach(function(type) {
+&nbsp;
+  /**
+   * `find.file` and `find.dir`
+   *
+   * Find files or sub-directories in a given directory and
+   * passes the result in an array as a whole. This follows
+   * the default callback style of nodejs, think about `fs.readdir`,
+   *
+   * @param {RegExp|String} pat
+   * @param {String} root
+   * @param {Function} fn
+   * @api public
+   */
+  find[type] = <span class="fstat-no" title="function not covered">function(pat, root, fn) {</span>
+<span class="cstat-no" title="statement not covered">    var buffer = [];</span>
+<span class="cstat-no" title="statement not covered">    if (arguments.length == 2) {</span>
+<span class="cstat-no" title="statement not covered">      fn = root;</span>
+<span class="cstat-no" title="statement not covered">      root = pat;</span>
+<span class="cstat-no" title="statement not covered">      pat = '';</span>
+    }
+<span class="cstat-no" title="statement not covered">    process.nextTick(<span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">      traverseAsync(</span>
+        root
+      , type
+      , <span class="fstat-no" title="function not covered">function(n) {</span> <span class="cstat-no" title="statement not covered">buffer.push(n);}</span>
+      , <span class="fstat-no" title="function not covered">function() {</span>
+<span class="cstat-no" title="statement not covered">          if (is.func(fn) &amp;&amp; pat) {</span>
+<span class="cstat-no" title="statement not covered">            fn(buffer.filter(<span class="fstat-no" title="function not covered">function(n) {</span></span>
+<span class="cstat-no" title="statement not covered">              return compare(pat, n);</span>
+            }));
+          } else {
+<span class="cstat-no" title="statement not covered">            fn(buffer);</span>
+          }
+        }
+      );
+    });
+<span class="cstat-no" title="statement not covered">    return {</span>
+      error: <span class="fstat-no" title="function not covered">function(handler) {</span>
+<span class="cstat-no" title="statement not covered">        if (is.func(handler)) {</span>
+<span class="cstat-no" title="statement not covered">          find.__errorHandler = handler;</span>
+        }
+      }
+    }
+  }
+&nbsp;
+  /**
+   * `find.eachfile` and `find.eachdir`
+   *
+   * Find files or sub-directories in a given directory and
+   * apply with a given action to each result immediately
+   * rather than pass them back as an array.
+   *
+   * @param {RegExp|String} pat
+   * @param {String} root
+   * @param {Function} action
+   * @return {Object} for chain methods
+   * @api public
+   *
+   */
+  find['each' + type] = <span class="fstat-no" title="function not covered">function(pat, root, action) {</span>
+<span class="cstat-no" title="statement not covered">    var callback = <span class="fstat-no" title="function not covered">function() {</span>}</span>
+<span class="cstat-no" title="statement not covered">    if (arguments.length == 2) {</span>
+<span class="cstat-no" title="statement not covered">      action = root;</span>
+<span class="cstat-no" title="statement not covered">      root = pat;</span>
+<span class="cstat-no" title="statement not covered">      pat = '';</span>
+    }
+<span class="cstat-no" title="statement not covered">    process.nextTick(<span class="fstat-no" title="function not covered">function() {</span></span>
+<span class="cstat-no" title="statement not covered">      traverseAsync(</span>
+          root
+        , type
+        , <span class="fstat-no" title="function not covered">function(n) {</span>
+<span class="cstat-no" title="statement not covered">            if (!is.func(action)) <span class="cstat-no" title="statement not covered">return;</span></span>
+<span class="cstat-no" title="statement not covered">            if (!pat || compare(pat, n)) {</span>
+<span class="cstat-no" title="statement not covered">              action(n);</span>
+            }
+          }
+        , callback
+      );
+    });
+<span class="cstat-no" title="statement not covered">    return {</span>
+      end: <span class="fstat-no" title="function not covered">function(fn) {</span>
+<span class="cstat-no" title="statement not covered">        if (is.func(fn)) {</span>
+<span class="cstat-no" title="statement not covered">          callback = fn;</span>
+        }
+<span class="cstat-no" title="statement not covered">        return this;</span>
+      },
+      error: <span class="fstat-no" title="function not covered">function(handler) {</span>
+<span class="cstat-no" title="statement not covered">        if (is.func(handler)) {</span>
+<span class="cstat-no" title="statement not covered">          find.__errorHandler = handler;</span>
+        }
+<span class="cstat-no" title="statement not covered">        return this;</span>
+      }
+    };
+  }
+&nbsp;
+  /**
+   * `find.fileSync` and `find.dirSync`
+   *
+   * Find files or sub-directories in a given directory synchronously
+   * and returns the result as an array. This follows the default 'Sync'
+   * methods of nodejs, think about `fs.readdirSync`,
+   *
+   * @param {RegExp|String} pat
+   * @param {String} root
+   * @return {Array} the result
+   * @api public
+   */
+  find[type + 'Sync'] = <span class="fstat-no" title="function not covered">function(pat, root) {</span>
+<span class="cstat-no" title="statement not covered">    var buffer = [];</span>
+<span class="cstat-no" title="statement not covered">    if (arguments.length == 1) {</span>
+<span class="cstat-no" title="statement not covered">      root = pat;</span>
+<span class="cstat-no" title="statement not covered">      pat = '';</span>
+    }
+<span class="cstat-no" title="statement not covered">    traverseSync(root, type, <span class="fstat-no" title="function not covered">function(n) {</span></span>
+<span class="cstat-no" title="statement not covered">      buffer.push(n);</span>
+    });
+<span class="cstat-no" title="statement not covered">    return pat &amp;&amp; buffer.filter(<span class="fstat-no" title="function not covered">function(n) {</span></span>
+<span class="cstat-no" title="statement not covered">      return compare(pat, n);</span>
+    }) || buffer;
+  }
+&nbsp;
+});
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 10:33:11 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
