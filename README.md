@@ -1,4 +1,7 @@
-# test coverage for  [find (v0.2.7)](https://github.com/yuanchuan/find#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-find.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-find) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-find.svg)](https://travis-ci.org/npmtest/node-npmtest-find)
+# npmtest-find
+
+#### test coverage for  [find (v0.2.7)](https://github.com/yuanchuan/find#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-find.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-find) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-find.svg)](https://travis-ci.org/npmtest/node-npmtest-find)
+
 #### Find files or directories by name
 
 [![NPM](https://nodei.co/npm/find.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/find)
