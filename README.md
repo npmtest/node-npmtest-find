@@ -1,6 +1,6 @@
 # npmtest-find
 
-#### test coverage for  [find (v0.2.7)](https://github.com/yuanchuan/find#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-find.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-find) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-find.svg)](https://travis-ci.org/npmtest/node-npmtest-find)
+#### basic test coverage for  [find (v0.2.7)](https://github.com/yuanchuan/find#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-find.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-find) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-find.svg)](https://travis-ci.org/npmtest/node-npmtest-find)
 
 #### Find files or directories by name
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-find/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-find/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-find/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-find/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-find/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-find/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-find/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-find/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-find/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-find/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-find/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-find/build/coverage.html/index.html)
 
@@ -82,7 +82,8 @@
         "test": "mocha"
     },
     "url": "https://github.com/yuanchuan/find",
-    "version": "0.2.7"
+    "version": "0.2.7",
+    "bin": {}
 }
 ```
 
